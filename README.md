@@ -12,6 +12,7 @@ PriceVecta eliminates manual data collection by combining automated web scraping
 - **Visual Intelligence Dashboard:** A clean, responsive interface viewing tracked products, current prices, and key monitoring metrics. 
 - **Historical Data Analytics:** Automatically stores pricing history and allows historical data to be exported as CSV for reporting, trend analysis, and business intelligence.
 - **Instant Alerting Engine:** Real-time Telegram and Email notifications immediately price changes are detected, including the previous price, current price, and product link.
+- **Scalable Data Pipeline:** Built with Scrapy, Flask, SQLAlchemy, and Docker to support reliable, automated monitoring workflows.
 - **Cloud-Based Scheduling:** Automated scraping jobs deployed on Google Cloud Compute Engine using Linux cron jobs.
 
 ### Target Audience
