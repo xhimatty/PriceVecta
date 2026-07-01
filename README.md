@@ -94,6 +94,6 @@ Each notification includes:
 * Cloud-based scheduled execution
 
 ### Production Roadmap
- [ ] Migration from SQLite to a highly available PostgreSQL instance on GCP Cloud SQL.
- [ ] Integration of advanced browser-automation fallback layers for heavy JavaScript-rendered single-page applications.
- [ ] Implementation of a visual configuration wizard allowing users to add custom targets directly from the UI.
+- Migration from SQLite to a highly available PostgreSQL instance on GCP Cloud SQL.
+- Integration of advanced browser-automation fallback layers for heavy JavaScript-rendered single-page applications.
+- Implementation of a visual configuration wizard allowing users to add custom targets directly from the UI.
