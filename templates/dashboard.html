@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+
+  <div class="mb-4">
+    <h1 class="h2 fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif;">Monitoring Dashboard</h1>
+    <p class="text-muted">Real-time competitive price tracking overview</p>
+  </div>
+
+  <div class="row g-4 mb-5">
+    
+    <div class="col-md-6 col-lg-3">
+      <div class="metric-card">
+        <div class="metric-label">Total Products Tracked</div>
+        <div class="metric-value text-brand-primary">{{ total_products }}</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="metric-card">
+        <div class="metric-label">Lowest Price Today</div>
+        <div class="metric-value text-brand-accent">
+          ₦{{ "{:,.2f}".format(lowest_price) }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="metric-card">
+        <div class="metric-label">Highest Price Today</div>
+        <div class="metric-value" style="color: #0F172A;">
+          ₦{{ "{:,.2f}".format(highest_price) }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="metric-card">
+        <div class="metric-label">Last Updated</div>
+        <div class="metric-value fs-5 mt-2 fw-semibold text-secondary">
+          {{ scraped_at }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Search Bar-->
+<div class="search-container mx-auto">
+    <form action="{{ url_for('dashboard') }}" method="get" class="search-form" novalidate>        
+        <div class="search-input-group">
+            <input type="text" name="query" placeholder="Search products..." class="search-input">
+            <button type="submit" class="btn-small search-submit-btn">Search</button>
+        </div>
+    </form>
+</div>
+
+  <!--Our Table-->
+<div class="table-responsive mx-3">
+    <table class="table table-hover align-middle custom-dashboard-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Store</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">New Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Availability</th>
+                <th scope="col">Url</th>
+                <th scope="col">Scraped At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in pagination.items %}
+            <tr>
+                <th scope="row">{{ loop.index + (pagination.page - 1) * pagination.per_page }}</th>
+                
+                <td>
+                    <span class="badge bg-light text-dark border px-2 py-1.5">
+                        {{ item.store }}
+                    </span>
+                </td>
+                
+                <td>{{ item.brand }}</td>
+                
+                <td class="product-name-cell">
+                    <a href="{{ url_for('history', product_id=item.id) }}" class="product-history-link">
+                        {{ item.product }}
+                    </a>
+                </td>
+                
+                <td>₦{{ "{:,.2f}".format(item.price) }}</td>
+                
+                <td class="fw-semibold text-dark">
+                    {% if item.new_price is not none %}
+                        ₦{{ "{:,.2f}".format(item.new_price) }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                
+                <td>
+                    {% if item.status == 'Price Drop' %}
+                        <span class="badge bg-success-subtle text-success px-2 py-1.5 d-block text-center border border-success-subtle">
+                            &darr; Price Drop
+                        </span>
+                    {% elif item.status == 'Price Increase' %}
+                        <span class="badge bg-danger-subtle text-danger px-2 py-1.5 d-block text-center border border-danger-subtle">
+                            &uarr; Price Increase
+                        </span>
+                    {% else %}
+                        <span class="badge bg-secondary-subtle text-secondary px-2 py-1.5 d-block text-center border border-secondary-subtle">
+                            No Change
+                        </span>
+                    {% endif %}
+                </td>
+                
+                <td>{{ item.availability }}</td>
+
+                <td>
+                    {% if item.url %}
+                        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="product-link">
+                            {{ item.url }}
+                        </a>
+                    {% else %}
+                        <span class="text-muted">{{ item.url }} (No link available)</span>
+                    {% endif %}
+                </td>
+                
+                <td class="text-muted" style="font-size: 0.9rem;">
+                    {{ item.scraped_at.strftime('%Y-%m-%d %H:%M') if item.scraped_at else 'Never' }}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="9" class="text-center text-muted py-4">
+                    No price intelligence data recorded yet.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+  <!--Pagination Button-->
+<nav aria-label="PriceVecta Page Navigation" class="my-4">
+    <ul class="pagination pagination-sm justify-content-center">
+        
+        {% if pagination.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('dashboard', page=pagination.prev_num, query=query) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo; Prev</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">&laquo; Prev</span>
+            </li>
+        {% endif %}
+
+        {% for page_num in pagination.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+            {% if page_num %}
+                {% if page_num == pagination.page %}
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">{{ page_num }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('dashboard', page=page_num, query=query) }}">{{ page_num }}</a>
+                    </li>
+                {% endif %}
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if pagination.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('dashboard', page=pagination.next_num, query=query) }}" aria-label="Next">
+                    <span aria-hidden="true">Next &raquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Next &raquo;</span>
+            </li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+  
+{% endblock %}

@@ -1,0 +1,27 @@
+# --- Environment Secrets ---
+.env
+
+# --- Python & Caching ---
+__pycache__/
+pricemonitor/__pycache__/
+migrations/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.scrapy/
+
+# --- Local Database (Root Folder) ---
+*.db
+pricemonitor.db
+
+# --- IDEs and Terminals ---
+.vscode/
+*.swp
+
+# --- OS files (Windows) ---
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
+logs/

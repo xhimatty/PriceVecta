@@ -1,0 +1,372 @@
+/* style.css */
+
+/* Import matching professional font families */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+/* Base body font setup */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #334155; /* Soft modern slate for optimal reading legibility */
+}
+
+/* Headings systematically use Plus Jakarta Sans */
+h1, h2, h3, h4, h5, h6, .brand-title, .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #0F172A; /* Deep navy/slate for structure */
+}
+
+a:hover {
+    color: #22C55E;
+}
+
+/* Navbar container */
+.navbar {
+    background-color: #1E3A8A; /* Finance blue */
+    padding: 0.75rem 1rem;
+}
+
+.navbar-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #22C55E !important; /* Savings green */
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+/* Nav links styling */
+.navbar .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.navbar .nav-link:hover {
+    color: #22C55E !important;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.navbar .nav-link.active {
+    color: #22C55E !important;
+    font-weight: 600;
+    opacity: 1;
+}
+
+/* Hero Section Typography */
+.brand-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #1E3A8A; /* Finance blue */
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #22C55E; /* Savings green */
+    letter-spacing: -0.5px;
+}
+
+.intro {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #475569;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Section titles layout */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+}
+
+/* Open, cardless column layout for features */
+.step-block {
+    padding: 1rem 1.5rem;
+    border-left: 3px solid #cbd5e1; /* Subtle clean indicator line */
+}
+
+.step-block h5 {
+    font-weight: 700;
+    color: #1E3A8A;
+    margin-bottom: 0.75rem;
+}
+
+/* Audience tag pill badges */
+.audience-badge {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #1E3A8A;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    display: inline-block;
+}
+
+
+
+/* ============================
+   Dashboard Metrics Styling
+   ============================ */
+
+.metric-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.metric-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b; /* Clean muted text slate */
+}
+
+.metric-value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-top: 0.25rem;
+}
+
+
+
+/* ==========================================
+   Custom Table Layout & Spacing Overrides 
+   ========================================== */
+
+/* Structure spacing around the table container to match the grid */
+.table-responsive {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Base table typography and vertical cell positioning */
+.custom-dashboard-table {
+    margin-bottom: 0 !important; /* Removes default extra spacing inside container */
+}
+
+.custom-dashboard-table thead th {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #475569; /* Muted slate header text */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 1.25rem 1rem; /* Expanded breathing room for headers */
+    white-space: nowrap; /* Prevents column header text tracking from wrapping ugly */
+}
+
+.custom-dashboard-table tbody td,
+.custom-dashboard-table tbody th {
+    font-family: 'Inter', sans-serif;
+    padding: 1.25rem 1rem; /* Uniform column height spacing */
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Explicit text color for the product cell */
+.custom-dashboard-table .product-name-cell {
+    font-weight: 500;
+    color: #0F172A; /* Deep navy/slate text */
+    min-width: 280px; /* Ensures text has room to breathe on wide screens */
+}
+
+/* Custom Table Hover Interaction using a 4% tint of Finance Blue */
+.table-hover.custom-dashboard-table tbody tr:hover {
+    background-color: rgba(30, 58, 138, 0.04) !important;
+    transition: background-color 0.15s ease-in-out;
+}
+
+
+/* Custom Brand Theme Overrides for Bootstrap Pagination */
+.pagination .page-link {
+    font-family: 'Inter', sans-serif;
+    color: #1E3A8A; /* Finance Blue */
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover State */
+.pagination .page-link:hover {
+    color: #ffffff;
+    background-color: #1E3A8A; /* Finance Blue background on hover */
+    border-color: #1E3A8A;
+}
+
+/* Active Page State (Stays green even on hover) */
+.pagination .page-item.active .page-link,
+.pagination .page-item.active .page-link:hover {
+    color: #ffffff !important;
+    background-color: #22C55E !important; 
+    border-color: #22C55E !important;
+    font-weight: 600;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #94a3b8; /* Muted slate gray */
+    background-color: #f8f9fa;
+    border-color: #e2e8f0;
+}
+
+.pagination .page-link:focus {
+    color: #1E3A8A;
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 0 0 0.25rem rgba(34, 197, 94, 0.25);
+}
+
+/* ==========================================
+   Search Filter Component Styling
+   ========================================== */
+
+/* Outer structural wrapper */
+.search-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 500px; /* Constrains search bar width for desktop scannability */
+}
+
+/* Flexbox grouping for inline layout */
+.search-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Breathable spacing between text field and button */
+}
+
+/* Text Input Field Override */
+.search-input {
+    font-family: 'Inter', sans-serif;
+    flex: 1; /* Instructs the text field to claim remaining horizontal space */
+    padding: 0.625rem 1rem;
+    font-size: 0.95rem;
+    color: #0F172A;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Clear placeholder readability matching UI specs */
+.search-input::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+/* Interactive focus ring mapping to Savings Green */
+.search-input:focus {
+    outline: none;
+    border-color: #22C55E;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+/* Specialized UI styling for the Submit Button */
+.search-submit-btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background-color: #1E3A8A; /* Theme Finance Blue */
+    border: 1px solid #1E3A8A;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* Smooth transition hover state */
+.search-submit-btn:hover {
+    background-color: #22C55E;
+    border-color: #22C55E;
+}
+
+/* Click feedback behavior */
+.search-submit-btn:active {
+    background-color: #0f1e4a;
+}
+
+
+/* ==========================================
+   Back to dashboard from history
+   ========================================== */
+
+.btn-back-custom{
+    color: #22C55E !important;
+    border: 1px solid #22C55E !important;
+    background-color: transparent;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-back-custom:hover {
+    color: #FFFFFF !important;
+    background-color: #22C55E !important;
+    border-color: #22C55E !important;
+}
+
+
+
+/* ==========================================
+   Download history as CSV styling
+   ========================================== */
+
+/* Custom export interaction rules */
+.btn-export-custom {
+    color: #22C55E !important;
+    border: 1px solid #22C55E !important;
+    background-color: transparent;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hovering shifts into your solid signature Savings Green fill */
+.btn-export-custom:hover {
+    color: #FFFFFF !important;
+    background-color: #22C55E !important;
+    border-color: #22C55E !important;
+}
+
+
+
+
+
+/* ==========================================
+   Responsive Adaptations for Mobile & Tablet
+   ========================================== */
+@media (max-width: 991.98px) {
+    /* Prevent table columns from pinching titles into vertical ribbons on tabs/phones */
+    .custom-dashboard-table .product-name-cell {
+        min-width: 320px; 
+        max-width: 450px;
+        white-space: normal;
+    }
+    
+    /* Slightly tighten cell padding on small displays to avoid clipping viewport heights */
+    .custom-dashboard-table thead th,
+    .custom-dashboard-table tbody td,
+    .custom-dashboard-table tbody th {
+        padding: 1rem 0.75rem;
+    }
+}

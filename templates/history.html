@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-sm btn-outline-secondary btn-back-custom">
+            &larr; Back to Dashboard
+        </a>
+
+        {% if records %}
+            <a href="{{ url_for('download_csv', product_id=records[0].id) }}" class="btn btn-sm btn-export-custom">
+                &darr; Download CSV
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="mb-4">
+        <div class="mb-2">
+            <span class="badge bg-light border text-secondary font-family-inter font-weight-medium px-2.5 py-1.5" style="font-size: 0.8rem; letter-spacing: 0.02em; color: #475569 !important;">
+                E-Commerce Store &bull; {{ store }}
+            </span>
+        </div>
+        
+        <h1 class="section-title text-start mb-1 fs-3" style="color: #0F172A; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; line-height: 1.3;">
+            {{ product }}
+        </h1>
+        
+        <p class="font-family-inter mb-0" style="font-size: 0.9rem; color: #64748B !important;">
+            Historical price adjustments and platform timelines captured by PriceVecta.
+        </p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle custom-dashboard-table mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">New Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date Tracked</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td class="product-name-cell">{{ record.product }}</td>
+                    <td>&#8358;{{ "{:,.2f}".format(record.price) }}</td>
+                    <td class="font-weight-bold text-dark">&#8358;{{ "{:,.2f}".format(record.new_price) }}</td>
+                    <td>
+                        {% if record.status == 'Price Drop' %}
+                            <span class="badge bg-success-light text-success font-weight-semibold">
+                                &darr; {{ record.status }}
+                            </span>
+                        {% elif record.status == 'Price Increase' %}
+                            <span class="badge bg-danger-light text-danger font-weight-semibold">
+                                &uarr; {{ record.status }}
+                            </span>
+                        {% else %}
+                            <span class="badge bg-light text-secondary">
+                                {{ record.status }}
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td class="text-secondary font-weight-medium">
+                        {{ record.scraped_at.strftime('%Y-%m-%d %H:%M UTC') }}
+                    </td>
+                </tr>
+                 {% else %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted py-4">
+                        No historical pricing records found for this item.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
