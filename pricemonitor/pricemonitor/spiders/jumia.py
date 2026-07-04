@@ -36,6 +36,6 @@ class JumiaSpider(scrapy.Spider):
         item['price'] = price
         item['availability'] = availability.strip() if availability else "In stock"
         item['url'] = response.url
-        item['scraped_at'] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M %Z")
+        item['scraped_at'] = datetime.now(timezone.utc)
 
         yield item

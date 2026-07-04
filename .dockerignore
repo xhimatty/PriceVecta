@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# Git
+.git
+.gitignore
+
+# Virtual env (not used, but harmless to keep as a guard)
+venv/
+env/
+
+# Database - don't bake stale local data into the image
+*.db
+*.db-journal
+instance/*.db
+instance/*.db-journal
+
+# Logs
+logs/*.log
+
+# Standalone utility script - not needed at runtime
+remove.py
+
+# Secrets - injected via env_file at runtime, never baked into image
+.env
+
+# Editor/OS clutter
+.vscode/
+.DS_Store

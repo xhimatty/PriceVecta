@@ -76,7 +76,7 @@ class KongaSpider(scrapy.Spider):
         item['availability'] = "In stock" if schema_avail and "InStock" in schema_avail else "Out of stock"
         
         item['url'] = response.url
-        item['scraped_at'] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M %Z")
+        item['scraped_at'] = datetime.now(timezone.utc)
 
         yield item
 

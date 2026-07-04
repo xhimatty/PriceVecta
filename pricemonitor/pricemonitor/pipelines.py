@@ -6,8 +6,6 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-import pandas as pd
-from datetime import datetime, timezone
 from models import db, PriceMonitor
 from app import app
 from notifications import send_alert
@@ -24,16 +22,15 @@ class PricemonitorPipeline:
             
             if last_record:
                 previous_price = last_record.new_price
+                if previous_price < incoming_price:
+                    status = 'Price Increase'
+                elif previous_price > incoming_price:
+                    status = 'Price Drop'
+                else:
+                    status = 'No Change'
             else:
                 previous_price = incoming_price
-
-            prices = pd.Series([previous_price, incoming_price], index=['price', 'new_price'])
-            if prices['new_price'] > prices['price']:
-                the_status = 'Price Increase'
-            elif prices['new_price'] < prices['price']:
-                the_status = 'Price Drop'
-            else:
-                the_status = 'No Change'
+                status = 'New'
 
             new_record = PriceMonitor(
                 store=item["store"],
@@ -41,24 +38,24 @@ class PricemonitorPipeline:
                 product=item["product"],
                 price=previous_price,
                 new_price=incoming_price,
-                status=the_status,
+                status=status,
                 availability=item["availability"],
                 url=item["url"],
-                scraped_at=datetime.now(timezone.utc),
+                scraped_at=item['scraped_at'],
             )
 
             db.session.add(new_record)
             try:
                 db.session.commit()
-                spider.logger.info(f"Successfully logged {item['product']} ({the_status})")
+                spider.logger.info(f"Successfully logged {item['product']} ({status})")
 
             except Exception as e:
                 db.session.rollback()
                 spider.logger.error(f"Database save failed: {e}")
 
-            if the_status in ('Price Drop', 'Price Increase'):
+            if status in ('Price Drop', 'Price Increase'):
                 send_alert(
-                    event_type=the_status,
+                    event_type=status,
                     product_name=item["product"],
                     old_price=previous_price,
                     new_price=incoming_price,

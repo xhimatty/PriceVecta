@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    container_name: pricevecta_web
+    command: python run.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./instance:/app/instance
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  scraper:
+    build: .
+    container_name: pricevecta_scraper
+    command: python scrapy_run.py
+    volumes:
+      - ./instance:/app/instance
+    env_file:
+      - .env
