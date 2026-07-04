@@ -27,10 +27,8 @@ PriceVecta eliminates manual data collection by combining automated web scraping
 ## System Architecture & Tech Stack
 PriceVecta is split into four core layers: Extraction, Storage, dashboard, and Infrastructure.
 
-====== put image architecture here =======
+<img width="1280" height="698" alt="WhatsApp Image 2026-07-03 at 11 50 48 AM" src="https://github.com/user-attachments/assets/4b9d939e-d320-4f75-b13c-4422d731acf4" />
 
-
-============================================
 
 ## Dashboard
 The dashboard provides a centralized view of monitored products, including:
