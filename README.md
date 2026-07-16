@@ -13,12 +13,15 @@ PriceVecta is a custom price monitoring platform that automates price collection
 PriceVecta eliminates manual data collection by combining automated web scraping with a web dashboard, historical analytics, CSV exports, and real-time alerts to provide businesses with actionable market insights, real-time competitive advantages, and data-driven pricing decisions.
 
 ## Key Features
-- **Custom Automated Extraction:** Continuous price and stock monitoring across client-specified e-commerce, retail, and distributor websites.
-- **Visual Intelligence Dashboard:** A clean, responsive interface viewing tracked products, current prices, and key monitoring metrics. 
-- **Historical Data Analytics:** Automatically stores pricing history and allows historical data to be exported as CSV for reporting, trend analysis, and business intelligence.
-- **Instant Alerting Engine:** Real-time Telegram and Email notifications immediately price changes are detected, including the previous price, current price, and product link.
-- **Scalable Data Pipeline:** Built with Scrapy, Flask, SQLAlchemy, and Docker to support reliable, automated monitoring workflows.
-- **Cloud-Based Scheduling:** Automated scraping jobs deployed on Google Cloud Compute Engine using Linux cron jobs.
+| Feature | Description |
+| :--- | :--- |
+| **Custom Automated Extraction** | Continuous price and stock monitoring across client-specified e-commerce, retail, and distributor websites. |
+| **Visual Intelligence Dashboard** | A clean, responsive interface viewing tracked products, current prices, and key monitoring metrics. |
+| **Historical Data Analytics** | Data persistence layer that logs pricing history over time, enabling long-term trend analysis. |
+| **Data Export** | Built-in capability to export historical pricing records to CSV for external reporting and business intelligence. |
+| **Instant Alerting Engine** | Real-time Telegram and Email notifications immediately price changes are detected, including the previous price, current price, and product link. |
+| **Scalable Data Pipeline** | Built with Scrapy, Flask, SQLAlchemy, and Docker to support reliable, automated monitoring workflows. |
+| **Cloud-Based Scheduling** | Automated scraping jobs deployed on Google Cloud Compute Engine using Linux cron jobs. |
 
 ### Target Audience
 **PriceVecta is engineered to power data-driven decisions for:**
@@ -29,7 +32,7 @@ PriceVecta eliminates manual data collection by combining automated web scraping
 ## System Architecture & Tech Stack
 PriceVecta is split into four core layers: Extraction, Storage, dashboard, and Infrastructure.
 
-<img width="1280" height="698" alt="WhatsApp Image 2026-07-03 at 11 50 48 AM" src="https://github.com/user-attachments/assets/4b9d939e-d320-4f75-b13c-4422d731acf4" />
+<img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/d7574fe6-83cc-4875-8bae-a5b1a62c2dc1" />
 
 
 ## Dashboard
@@ -61,26 +64,12 @@ Each notification includes:
 * Product URL
 
 ## Technology Stack
-### Backend
-* Python
-* Flask
-* Scrapy
-* SQLAlchemy
-
-### Database
-* SQLite
-
-### Data Processing
-* Pandas
-
-### Notifications
-* Telegram Bot API
-* Email
-
-### Infrastructure & Deployment
-* Docker
-* Google Cloud Compute Engine
-* Linux Cron Jobs
+| Category | Technologies |
+| :--- | :--- |
+| **Backend** | Python, Flask, Scrapy, SQLAlchemy |
+| **Database** | SQLite |
+| **Integrations** | Telegram API, SMTP (Email Notifications) |
+| **Infrastructure & Deployment** | Docker, Google Cloud Compute Engine, Linux Cron Jobs |
 
 ### Technical Challenges & Engineering Resilience 
 - **Adaptive Target Structural Failovers:** E-commerce architectures frequently undergo layout updates and minor frontend revisions that can disrupt brittle parsing logic. To prevent pipeline downtime, the extraction engine utilises a defensive multi-layered data extraction strategy, prioritising semantic structural metadata and falling back gracefully to contextual arrays.
