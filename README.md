@@ -50,6 +50,10 @@ Whenever a scraper runs, newly collected prices are compared against the latest 
 
 **The image below shows automated Telegram messages sent immediately after price changes were detected.**
 
+<img width="1282" height="627" alt="image" src="https://github.com/user-attachments/assets/51a5a1fa-3d9a-4f2b-a9ef-25023f909ece" />
+
+<img width="1282" height="736" alt="image" src="https://github.com/user-attachments/assets/852e5792-870e-4e33-a7d2-d7cddb2eef01" />
+
 If a change is detected, PriceVecta automatically:
 * Records the new price
 * Stores the previous price history
