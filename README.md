@@ -19,7 +19,7 @@ PriceVecta eliminates manual data collection by combining automated web scraping
 | **Visual Intelligence Dashboard** | A clean, responsive interface viewing tracked products, current prices, and key monitoring metrics. |
 | **Historical Data Analytics** | Data persistence layer that logs pricing history over time, enabling long-term trend analysis. |
 | **Data Export** | Built-in capability to export historical pricing records to CSV for external reporting and business intelligence. |
-| **Instant Alerting Engine** | Real-time Telegram and Email notifications immediately price changes are detected, including the previous price, current price, and product link. |
+| **Instant Alerting Engine** | Real-time Telegram and Email notifications immediately when price changes are detected, including the previous price, current price, and product link. |
 | **Scalable Data Pipeline** | Built with Scrapy, Flask, SQLAlchemy, and Docker to support reliable, automated monitoring workflows. |
 | **Cloud-Based Scheduling** | Automated scraping jobs deployed on Google Cloud Compute Engine using Linux cron jobs. |
 
@@ -33,6 +33,15 @@ PriceVecta eliminates manual data collection by combining automated web scraping
 PriceVecta is split into four core layers: Extraction, Storage, dashboard, and Infrastructure.
 
 <img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/d7574fe6-83cc-4875-8bae-a5b1a62c2dc1" />
+
+
+## Technology Stack
+| Category | Technologies |
+| :--- | :--- |
+| **Backend** | Python, Flask, Scrapy, SQLAlchemy |
+| **Database** | SQLite |
+| **Integrations** | Telegram API, SMTP (Email Notifications) |
+| **Infrastructure & Deployment** | Docker, Google Cloud Compute Engine, Linux Cron Jobs |
 
 
 ## Dashboard
@@ -54,10 +63,10 @@ Whenever a scraper runs, newly collected prices are compared against the latest 
 
 <img width="1282" height="736" alt="image" src="https://github.com/user-attachments/assets/852e5792-870e-4e33-a7d2-d7cddb2eef01" />
 
-If a change is detected, PriceVecta automatically:
-* Records the new price
+When a price change is detected, PriceVecta automatically:
+* Records the new price in SQLite
 * Stores the previous price history
-* Updates the dashboard
+* Updates the dashboard metrics
 * Sends Telegram notifications
 * Sends email alerts
 
@@ -67,16 +76,9 @@ Each notification includes:
 * Current price
 * Product URL
 
-## Technology Stack
-| Category | Technologies |
-| :--- | :--- |
-| **Backend** | Python, Flask, Scrapy, SQLAlchemy |
-| **Database** | SQLite |
-| **Integrations** | Telegram API, SMTP (Email Notifications) |
-| **Infrastructure & Deployment** | Docker, Google Cloud Compute Engine, Linux Cron Jobs |
 
 ### Technical Challenges & Engineering Resilience 
-- **Adaptive Target Structural Failovers:** E-commerce architectures frequently undergo layout updates and minor frontend revisions that can disrupt brittle parsing logic. To prevent pipeline downtime, the extraction engine utilises a defensive multi-layered data extraction strategy, prioritising semantic structural metadata and falling back gracefully to contextual arrays.
+- **Adaptive Target Structural Failovers:** E-commerce architectures frequently undergo layout updates and minor frontend revisions that can break brittle parsing logic. To prevent pipeline downtime, the extraction engine utilises a defensive multi-layered data extraction strategy, prioritising semantic structural metadata and falling back gracefully to contextual arrays.
  
 - **Pipeline Longevity & Network Optimisation:** Web data acquisition at production scale requires strict compliance with remote server stability. The pipeline enforces request throttling, organic delay distributions, and custom profiling to mimic standard user agents. This ensures the scraping engine remains low-impact, respects target bandwidth limits, and avoids triggering automated rate-limiting flags.
 
@@ -93,4 +95,4 @@ Each notification includes:
 * Cloud-based scheduled execution
 
 ### Production Roadmap
-- Implementation of a visual configuration wizard allowing users to add custom targets directly from the UI.
+- [ ] Implementation of a visual configuration wizard allowing users to add custom targets directly from the UI.
