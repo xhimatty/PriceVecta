@@ -7,7 +7,7 @@ PriceVecta is a custom price monitoring platform that automates price collection
 
 **The image below shows the Flask dashboard displaying the historical price history of a monitored product.**
 
-<img width="2736" height="1562" alt="Screenshot 2026-06-28 015828" src="https://github.com/user-attachments/assets/70f1bcba-9a9c-4de8-b91d-85e1bf403088" />
+<img width="2736" height="1562" alt="Screenshot 2026-06-28 015828" src="https://i.ibb.co/NdY7yDPM/Screenshot-2026-06-28-015828.png" />
 
 
 PriceVecta eliminates manual data collection by combining automated web scraping with a web dashboard, historical analytics, CSV exports, and real-time alerts to provide businesses with actionable market insights, real-time competitive advantages, and data-driven pricing decisions.
