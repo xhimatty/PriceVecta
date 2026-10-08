@@ -32,7 +32,7 @@ PriceVecta eliminates manual data collection by combining automated web scraping
 ## System Architecture & Tech Stack
 PriceVecta is split into four core layers: Extraction, Storage, dashboard, and Infrastructure.
 
-<img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/d7574fe6-83cc-4875-8bae-a5b1a62c2dc1" />
+<img width="1408" height="768" alt="image" src="https://i.ibb.co/PGpdm4BG/IMG-8177.png" />
 
 
 ## Technology Stack
@@ -59,9 +59,9 @@ Whenever a scraper runs, newly collected prices are compared against the latest 
 
 **The image below shows automated Telegram messages sent immediately after price changes were detected.**
 
-<img width="1282" height="627" alt="image" src="https://github.com/user-attachments/assets/51a5a1fa-3d9a-4f2b-a9ef-25023f909ece" />
+<img width="1282" height="627" alt="image" src="https://i.ibb.co/Pvyr4WGY/IMG-8860.jpg" />
 
-<img width="1282" height="736" alt="image" src="https://github.com/user-attachments/assets/852e5792-870e-4e33-a7d2-d7cddb2eef01" />
+<img width="1282" height="736" alt="image" src="https://i.ibb.co/BKTMJ1P5/IMG-8859.jpg" />
 
 When a price change is detected, PriceVecta automatically:
 * Records the new price in SQLite
